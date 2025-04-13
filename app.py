@@ -71,3 +71,10 @@ def edit_supervisor(id_supervisor):
         cur.close()
         conn.close()
         return render_template('edit.html', supervisor=supervisor)
+
+# Para compatibilidade com Vercel
+if __name__ == '__main__':
+    app.run()
+else:
+    # Configuração para Vercel
+    application = app
