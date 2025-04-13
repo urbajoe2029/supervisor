@@ -5,8 +5,7 @@ import os
 app = Flask(__name__)
 
 def get_db_connection():
-    return psycopg2.connect(os.environ['postgresql://neondb_owner:npg_XU2VZajNP4oR@ep-weathered-sound-a5q0b2x5-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'])
-
+    return psycopg2.connect(os.environ['DATABASE_URL'])
 @app.route('/')
 def index():
     conn = get_db_connection()
