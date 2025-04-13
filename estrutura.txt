@@ -1,0 +1,9 @@
+supervisor-app-web/
+├── app.py
+├── templates/
+│   └── index.html
+├── static/
+│   └── style.css
+├── requirements.txt
+├── Procfile
+├── .gitignore
