@@ -1,4 +1,4 @@
 flask
 psycopg2-binary
-vercel-wsgi
+vercel
 gunicorn==23.0.0
