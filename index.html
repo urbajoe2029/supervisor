@@ -23,8 +23,9 @@
       <td>{{ s[3] }}</td>
       <td>{{ 'Sim' if s[4] else 'Não' }}</td>
       <td>
+        <a href="/edit/{{ s[0] }}" class="btn btn-warning btn-sm me-1">Editar</a>
         <a href="/delete/{{ s[0] }}" class="btn btn-danger btn-sm">Excluir</a>
-      </td>
+        </td>
     </tr>
     {% endfor %}
   </tbody>

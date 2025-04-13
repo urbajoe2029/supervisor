@@ -44,3 +44,31 @@ def delete_supervisor(id_supervisor):
     cur.close()
     conn.close()
     return redirect(url_for('index'))
+
+@app.route('/edit/<int:id_supervisor>', methods=['GET', 'POST'])
+def edit_supervisor(id_supervisor):
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    if request.method == 'POST':
+        nome = request.form['nome']
+        matricula = request.form['matricula']
+        email = request.form['email']
+        ativo = True if request.form.get('ativo') == 'on' else False
+
+        cur.execute('''
+            UPDATE supervisores
+            SET nome = %s, matricula = %s, email = %s, ativo = %s
+            WHERE id_supervisor = %s
+        ''', (nome, matricula, email, ativo, id_supervisor))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('index'))
+
+    else:
+        cur.execute('SELECT * FROM supervisores WHERE id_supervisor = %s', (id_supervisor,))
+        supervisor = cur.fetchone()
+        cur.close()
+        conn.close()
+        return render_template('edit.html', supervisor=supervisor)

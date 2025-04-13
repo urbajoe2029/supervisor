@@ -1,0 +1,13 @@
+<h2>Editar Supervisor</h2>
+
+<form action="" method="POST">
+  <input name="nome" class="form-control mb-2" value="{{ supervisor[1] }}" required>
+  <input name="matricula" class="form-control mb-2" value="{{ supervisor[2] }}" required>
+  <input name="email" type="email" class="form-control mb-2" value="{{ supervisor[3] }}" required>
+  <label>
+    <input type="checkbox" name="ativo" {% if supervisor[4] %}checked{% endif %}> Ativo
+  </label>
+  <br>
+  <button type="submit" class="btn btn-success mt-2">Salvar</button>
+  <a href="{{ url_for('index') }}" class="btn btn-secondary mt-2">Cancelar</a>
+</form>
