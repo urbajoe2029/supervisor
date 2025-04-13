@@ -1,18 +1,30 @@
-<h2 class="mt-4">Inspeções</h2>
-<table class="table table-striped">
+<h2>Supervisores</h2>
+
+<form action="/add" method="POST" class="mb-4">
+  <input name="nome" class="form-control mb-2" placeholder="Nome" required>
+  <input name="matricula" class="form-control mb-2" placeholder="Matrícula" required>
+  <input name="email" type="email" class="form-control mb-2" placeholder="Email" required>
+  <label><input type="checkbox" name="ativo"> Ativo</label>
+  <button type="submit" class="btn btn-primary d-block mt-2">Adicionar</button>
+</form>
+
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Descrição</th>
-      <th>Data</th>
+      <th>ID</th><th>Nome</th><th>Matrícula</th><th>Email</th><th>Ativo</th><th>Ações</th>
     </tr>
   </thead>
   <tbody>
-    {% for row in rows %}
+    {% for s in supervisores %}
     <tr>
-      <td>{{ row[0] }}</td>
-      <td>{{ row[1] }}</td>
-      <td>{{ row[2] }}</td>
+      <td>{{ s[0] }}</td>
+      <td>{{ s[1] }}</td>
+      <td>{{ s[2] }}</td>
+      <td>{{ s[3] }}</td>
+      <td>{{ 'Sim' if s[4] else 'Não' }}</td>
+      <td>
+        <a href="/delete/{{ s[0] }}" class="btn btn-danger btn-sm">Excluir</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
